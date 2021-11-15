@@ -5,28 +5,35 @@
  */
 package autores.vistas;
 
-import interfaces.IControladorAMProfesor;
+import interfaces.IControladorAMAlumno;
 import java.awt.Dialog;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class VentanaAMProfesor extends JDialog {
-    private IControladorAMProfesor controlador;
+public class VentanaAAlumno extends JDialog {
+    private IControladorAMAlumno controlador;
 
     /**
      * Constructor
      * @param controlador controlador de la ventana
      * @param ventanaPadre ventana padre (VentanaAutores en este caso)
      */
-    public VentanaAMProfesor(IControladorAMProfesor controlador, Dialog ventanaPadre) {
+    public VentanaAAlumno(IControladorAMAlumno controlador, Dialog ventanaPadre) {
         super(ventanaPadre, true);
         initComponents();
         this.controlador = controlador;        
     }
+    
+    /**
+     * Devuelve el campo txtDNI
+     * @return JTextField  - campo txtDNI
+     */
+    public JTextField verTxtDNI() {
+        return this.txtDNI;
+    } 
 
     /**
      * Devuelve el campo txtApellidos
@@ -45,20 +52,12 @@ public class VentanaAMProfesor extends JDialog {
     }
     
     /**
-     * Devuelve el campo txtDNI
-     * @return JTextField  - campo txtDNI
+     * Devuelve el campo txtCX
+     * @return JTextField  - campo txtCX
      */
-    public JTextField verTxtDNI() {
-        return this.txtDNI;
-    }        
-    
-    /**
-     * Devuelve el combo Cargo
-     * @return JComboBox  - combo Cargo
-     */        
-    public JComboBox verComboCargo() {
-        return this.comboCargo;
-    }
+    public JTextField verTxtCX() {
+        return this.txtCX;
+    }    
     
     /**
      * Devuelve el campo passClave
@@ -74,17 +73,8 @@ public class VentanaAMProfesor extends JDialog {
      */    
     public JPasswordField verPassRepetirClave() {
         return this.passRepetirClave;
-    }
-    
-    
-    /**
-     * Devuelve la tabla tablaGrupos
-     * @return JTable  - tabla tablaGrupos
-     */ 
-    public JTable verTablaGrupos() {
-        return this.tablaGrupos;
     }    
-        
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,15 +91,12 @@ public class VentanaAMProfesor extends JDialog {
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        comboCargo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtDNI = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaGrupos = new javax.swing.JTable();
+        txtCX = new javax.swing.JTextField();
         passClave = new javax.swing.JPasswordField();
-        passRepetirClave = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
+        passRepetirClave = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -158,10 +145,7 @@ public class VentanaAMProfesor extends JDialog {
             }
         });
 
-        jLabel3.setText("Cargo:");
-
-        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboCargo.setToolTipText("Cargo del profesor");
+        jLabel3.setText("CX:");
 
         jLabel4.setText("Documento:");
 
@@ -172,20 +156,11 @@ public class VentanaAMProfesor extends JDialog {
             }
         });
 
-        jLabel5.setText("Grupos:");
-
-        tablaGrupos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        txtCX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCXPresionarTecla(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tablaGrupos);
+        });
 
         passClave.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -193,13 +168,13 @@ public class VentanaAMProfesor extends JDialog {
             }
         });
 
+        jLabel6.setText("Clave:");
+
         passRepetirClave.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passRepetirClavePresionarTecla(evt);
             }
         });
-
-        jLabel6.setText("Clave:");
 
         jLabel7.setText("Repetir clave:");
 
@@ -210,19 +185,6 @@ public class VentanaAMProfesor extends JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(409, 409, 409))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -233,12 +195,17 @@ public class VentanaAMProfesor extends JDialog {
                             .addComponent(jLabel7))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombres)
+                            .addComponent(txtNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                             .addComponent(txtDNI)
                             .addComponent(txtApellidos)
-                            .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCX)
                             .addComponent(passClave)
-                            .addComponent(passRepetirClave))))
+                            .addComponent(passRepetirClave)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -258,7 +225,7 @@ public class VentanaAMProfesor extends JDialog {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,15 +235,11 @@ public class VentanaAMProfesor extends JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
-                .addContainerGap())
+                    .addComponent(btnCancelar)
+                    .addComponent(btnGuardar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -306,6 +269,10 @@ public class VentanaAMProfesor extends JDialog {
         this.controlador.ventanaObtenerFoco(evt);
     }//GEN-LAST:event_ventanaObtenerFoco
 
+    private void txtCXPresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCXPresionarTecla
+        this.controlador.txtCXPresionarTecla(evt);
+    }//GEN-LAST:event_txtCXPresionarTecla
+
     private void passClavePresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passClavePresionarTecla
         this.controlador.passClavePresionarTecla(evt);
     }//GEN-LAST:event_passClavePresionarTecla
@@ -318,19 +285,16 @@ public class VentanaAMProfesor extends JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField passClave;
     private javax.swing.JPasswordField passRepetirClave;
-    private javax.swing.JTable tablaGrupos;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCX;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables

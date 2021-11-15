@@ -10,7 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JTextField;
 import interfaces.IControladorALugar;
 
-public class VentanaAMLugar extends JDialog {
+public class VentanaALugar extends JDialog {
     private IControladorALugar controlador;
    
     /**
@@ -18,7 +18,7 @@ public class VentanaAMLugar extends JDialog {
      * @param controlador controlador de la ventana
      * @param ventanaPadre ventana padre (VentanaLugares en este caso)
      */        
-    public VentanaAMLugar(IControladorALugar controlador, Dialog ventanaPadre) {
+    public VentanaALugar(IControladorALugar controlador, Dialog ventanaPadre) {
         super(ventanaPadre, true);
         initComponents();
         this.controlador = controlador;

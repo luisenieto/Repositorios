@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class VentanaAMAlumno extends JDialog {
+public class VentanaMAlumno extends JDialog {
     private IControladorAMAlumno controlador;
 
     /**
@@ -21,7 +21,7 @@ public class VentanaAMAlumno extends JDialog {
      * @param controlador controlador de la ventana
      * @param ventanaPadre ventana padre (VentanaAutores en este caso)
      */
-    public VentanaAMAlumno(IControladorAMAlumno controlador, Dialog ventanaPadre) {
+    public VentanaMAlumno(IControladorAMAlumno controlador, Dialog ventanaPadre) {
         super(ventanaPadre, true);
         initComponents();
         this.controlador = controlador;        

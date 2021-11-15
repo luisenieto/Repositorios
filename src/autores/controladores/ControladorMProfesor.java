@@ -11,8 +11,8 @@ import autores.modelos.GestorAutores;
 import autores.modelos.ModeloComboCargos;
 import autores.modelos.ModeloTablaGrupos;
 import autores.modelos.Profesor;
-import autores.vistas.VentanaAMProfesor;
-import auxiliares.Apariencia;
+import autores.vistas.VentanaAProfesor;
+import autores.vistas.VentanaMProfesor;
 import grupos.modelos.GestorGrupos;
 import interfaces.IGestorAutores;
 import interfaces.IGestorGrupos;
@@ -23,35 +23,35 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-public class ControladorAMProfesor implements IControladorAMProfesor {    
-    private VentanaAMProfesor ventana;
+public class ControladorMProfesor implements IControladorAMProfesor {    
+    private VentanaMProfesor ventana;
     private Profesor profesor;
 
     /**
      * Constructor
      * @param ventanaPadre (VentanaAutores en este caso)
      */
-    public ControladorAMProfesor(Dialog ventanaPadre) {
-        this(ventanaPadre, null);
-    }
+//    public ControladorMProfesor(Dialog ventanaPadre) {
+//        this(ventanaPadre, null);
+//    }
     
     /**
      * Constructor
      * @param ventanaPadre (VentanaAutores en este caso)
      * @param profesor profesor a modificar
      */    
-    public ControladorAMProfesor(Dialog ventanaPadre, Profesor profesor) {
+    public ControladorMProfesor(Dialog ventanaPadre, Profesor profesor) {
         this.profesor = profesor;
-        this.ventana = new VentanaAMProfesor(this, ventanaPadre);
-        this.ventana.setTitle(this.profesor == null ? TITULO_NUEVO : TITULO_MODIFICAR);
+        this.ventana = new VentanaMProfesor(this, ventanaPadre);
+        this.ventana.setTitle(TITULO_MODIFICAR);
         this.ventana.setLocationRelativeTo(null);
         this.ventana.verComboCargo().setModel(new ModeloComboCargos());
-        Apariencia.asignarNimbusLookAndFeel("Nimbus");
-        if (this.profesor == null) { //nuevo profesor
-            this.configurarTabla(new ModeloTablaGrupos());
-            this.ventana.verTablaGrupos().setEnabled(false);
-        }
-        else { //modificación de profesor
+//        Apariencia.asignarNimbusLookAndFeel("Nimbus");
+//        if (this.profesor == null) { //nuevo profesor
+//            this.configurarTabla(new ModeloTablaGrupos());
+//            this.ventana.verTablaGrupos().setEnabled(false);
+//        }
+//        else { //modificación de profesor
             this.ventana.verTxtDNI().setText(Integer.toString(this.profesor.verDNI()));
             this.ventana.verTxtDNI().setEditable(false);
             this.ventana.verTxtApellidos().setText(this.profesor.verApellidos());
@@ -63,7 +63,7 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
             this.ventana.verPassClave().setText(this.profesor.verClave());
             this.ventana.verPassRepetirClave().setText(this.profesor.verClave());            
             this.configurarTabla(new ModeloTablaGrupos(this.profesor));
-        }
+//        }
         this.ventana.setVisible(true);
     }    
     
@@ -86,9 +86,9 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
         Cargo cargo = ((ModeloComboCargos)this.ventana.verComboCargo().getModel()).obtenerCargo();
         String clave = new String(this.ventana.verPassClave().getPassword());
         String claveRepetida = new String(this.ventana.verPassRepetirClave().getPassword());
-        if (this.profesor == null) //nuevo profesor
-            this.nuevoProfesor(dni, apellidos, nombres, cargo, clave, claveRepetida);
-        else //modificar profesor
+//        if (this.profesor == null) //nuevo profesor
+//            this.nuevoProfesor(dni, apellidos, nombres, cargo, clave, claveRepetida);
+//        else //modificar profesor
             this.modificarProfesor(apellidos, nombres, cargo, clave, claveRepetida);
     }
     
@@ -101,14 +101,14 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
      * @param clave clave del profesor
      * @param claveRepetida clave (repetida) del profesor
      */
-    private void nuevoProfesor(int dni, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida) {        
-        IGestorAutores ga = GestorAutores.instanciar();
-        String resultado = ga.nuevoAutor(dni, apellidos, nombres, cargo, clave, claveRepetida);
-        if (!resultado.equals(IGestorAutores.EXITO))
-            JOptionPane.showMessageDialog(null, resultado, TITULO_NUEVO, JOptionPane.ERROR_MESSAGE);
-        else
-            this.ventana.dispose();                                    
-    }
+//    private void nuevoProfesor(int dni, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida) {        
+//        IGestorAutores ga = GestorAutores.instanciar();
+//        String resultado = ga.nuevoAutor(dni, apellidos, nombres, cargo, clave, claveRepetida);
+//        if (!resultado.equals(IGestorAutores.EXITO))
+//            JOptionPane.showMessageDialog(null, resultado, TITULO_NUEVO, JOptionPane.ERROR_MESSAGE);
+//        else
+//            this.ventana.dispose();                                    
+//    }
     
     /**
      * Se encarga de la modificación del profesor

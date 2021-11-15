@@ -15,7 +15,7 @@ public class MiembroEnGrupo {
     private Autor miembro;
     private Grupo grupo;
     private Rol rol;
-    private List<Publicacion> publicaciones = new ArrayList<>();
+//    private List<Publicacion> publicaciones = new ArrayList<>();
 
     /**
      * Constructor

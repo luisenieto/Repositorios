@@ -209,9 +209,9 @@ public class Publicacion implements Comparable<Publicacion> {
     }
 
     /**
-     * Compara si 2 publicaciones son iguales según el ...
+     * Compara si 2 publicaciones son iguales según el título
      * @param obj objeto contra el cual se compara
-     * @return boolean  - true si 2 publicaciones tienen el mismo ..., false en caso contrario
+     * @return boolean  - true si 2 publicaciones tienen el mismo título, false en caso contrario
      */
     @Override
     public boolean equals(Object obj) {

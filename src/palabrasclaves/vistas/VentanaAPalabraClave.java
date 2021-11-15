@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tipos.vistas;
+package palabrasclaves.vistas;
 
 import java.awt.Dialog;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
-import interfaces.IControladorATipo;
+import interfaces.IControladorAPalabraClave;
 
-public class VentanaAMTipo extends JDialog {
-    private IControladorATipo controlador;
+public class VentanaAPalabraClave extends JDialog {
+    private IControladorAPalabraClave controlador;
    
     /**
      * Constructor 
      * @param controlador controlador de la ventana
-     * @param ventanaPadre ventana padre (VentanaTipos en este caso)
+     * @param ventanaPadre ventana padre (VentanaPalabrasClaves en este caso)
      */        
-    public VentanaAMTipo(IControladorATipo controlador, Dialog ventanaPadre) {
+    public VentanaAPalabraClave(IControladorAPalabraClave controlador, Dialog ventanaPadre) {
         super(ventanaPadre, true);
         initComponents();
         this.controlador = controlador;

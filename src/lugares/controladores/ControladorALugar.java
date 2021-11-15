@@ -13,14 +13,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import lugares.modelos.GestorLugares;
-import lugares.vistas.VentanaAMLugar;
+import lugares.vistas.VentanaALugar;
 import interfaces.IControladorALugar;
 
 /**
  * Clase para el controlador de Altas de lugares
  */
 public class ControladorALugar implements IControladorALugar {       
-    private VentanaAMLugar ventana;    
+    private VentanaALugar ventana;    
     
     /**
      * Constructor
@@ -28,7 +28,7 @@ public class ControladorALugar implements IControladorALugar {
      * @param autor autor sobre el cual hay que ver qué habilitar según sus grupos
      */    
     public ControladorALugar(Dialog ventanaPadre, Autor autor) {
-        this.ventana = new VentanaAMLugar(this, ventanaPadre);
+        this.ventana = new VentanaALugar(this, ventanaPadre);
         this.ventana.setTitle(TITULO + " - (" + autor.verApeYNom() + ")");
         this.ventana.setLocationRelativeTo(null);
         Apariencia.asignarNimbusLookAndFeel("Nimbus");

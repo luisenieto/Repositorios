@@ -71,22 +71,22 @@ public class Grupo implements Comparable<Grupo> {
     /**
      * Agrega el autor como miembro del grupo, junto con el rol en el mismo, siempre y cuando no esté
      * Si el grupo al cual se quiere agregar el miembro es el de super administradores, el rol es únicamente el de administrador
-     * @param miembro miembro a agregar
+     * @param autor autor a agregar
      * @param rol rol que cumple el miembro en el grupo
      */
-    public void agregarMiembro(Autor miembro, Rol rol) {
-        if ((miembro != null) && (rol != null)) {   
+    public void agregarMiembro(Autor autor, Rol rol) {
+        if ((autor != null) && (rol != null)) {   
             MiembroEnGrupo meg;
             if (this.nombre.equals(IGestorGrupos.NOMBRE_SUPER_ADMINISTRADORES))
-                meg = new MiembroEnGrupo(miembro, this, Rol.ADMINISTRADOR);
+                meg = new MiembroEnGrupo(autor, this, Rol.ADMINISTRADOR);
                 //al grupo de super administradores sólo se puede agregar un miembro con el rol de administrador
             else 
-                meg = new MiembroEnGrupo(miembro, this, rol);
+                meg = new MiembroEnGrupo(autor, this, rol);
             if (!this.miembros.contains(meg)) {
                 this.miembros.add(meg);
                 Comparator<MiembroEnGrupo> cmp = (meg1, meg2) -> meg1.verMiembro().compareTo(meg2.verMiembro());
                 Collections.sort(this.miembros, cmp);
-                miembro.agregarGrupo(this, rol);                
+                autor.agregarGrupo(this, rol);                
             }
         }
     }

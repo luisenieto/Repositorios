@@ -5,7 +5,6 @@
  */
 package auxiliares;
 
-//import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDateChooser;
 import java.time.DateTimeException;
 import java.time.LocalDate;

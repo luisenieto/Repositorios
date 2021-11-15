@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 public interface IControladorAMProfesor {
     public static final String TITULO_NUEVO = "Nuevo profesor"; 
     public static final String TITULO_MODIFICAR = "Modificar profesor"; 
-    public static final String CONFIRMACION = "¿Desea borrar los grupos especificados?";
+    //public static final String CONFIRMACION = "¿Desea borrar los grupos especificados?";
     
     /**
      * Acción a ejecutar cuando se selecciona el botón Guardar

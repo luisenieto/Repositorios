@@ -13,14 +13,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import idiomas.modelos.GestorIdiomas;
-import idiomas.vistas.VentanaAMIdioma;
+import idiomas.vistas.VentanaAIdioma;
 import interfaces.IControladorAIdioma;
 
 /**
  * Clase para el controlador de Altas de idiomas
  */
 public class ControladorAIdioma implements IControladorAIdioma {       
-    private VentanaAMIdioma ventana;    
+    private VentanaAIdioma ventana;    
     
     /**
      * Constructor
@@ -28,7 +28,7 @@ public class ControladorAIdioma implements IControladorAIdioma {
      * @param autor autor sobre el cual hay que ver qué habilitar según sus grupos
      */    
     public ControladorAIdioma(Dialog ventanaPadre, Autor autor) {
-        this.ventana = new VentanaAMIdioma(this, ventanaPadre);
+        this.ventana = new VentanaAIdioma(this, ventanaPadre);
         this.ventana.setTitle(TITULO + " - (" + autor.verApeYNom() + ")");
         this.ventana.setLocationRelativeTo(null);
         Apariencia.asignarNimbusLookAndFeel("Nimbus");

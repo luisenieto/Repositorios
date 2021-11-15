@@ -13,14 +13,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import palabrasclaves.modelos.GestorPalabrasClaves;
-import palabrasclaves.vistas.VentanaAMPalabraClave;
+import palabrasclaves.vistas.VentanaAPalabraClave;
 import interfaces.IControladorAPalabraClave;
 
 /**
  * Clase para el controlador de Altas de palabras claves
  */
 public class ControladorAPalabraClave implements IControladorAPalabraClave {       
-    private VentanaAMPalabraClave ventana;    
+    private VentanaAPalabraClave ventana;    
     
     /**
      * Constructor
@@ -28,7 +28,7 @@ public class ControladorAPalabraClave implements IControladorAPalabraClave {
      * @param autor autor sobre el cual hay que ver qué habilitar según sus grupos
      */    
     public ControladorAPalabraClave(Dialog ventanaPadre, Autor autor) {
-        this.ventana = new VentanaAMPalabraClave(this, ventanaPadre);
+        this.ventana = new VentanaAPalabraClave(this, ventanaPadre);
         this.ventana.setTitle(TITULO + " - (" + autor.verApeYNom() + ")");
         this.ventana.setLocationRelativeTo(null);
         Apariencia.asignarNimbusLookAndFeel("Nimbus");

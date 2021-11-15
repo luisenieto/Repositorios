@@ -9,7 +9,8 @@ import autores.modelos.Alumno;
 import interfaces.IControladorAMAlumno;
 import autores.modelos.GestorAutores;
 import autores.modelos.ModeloTablaGrupos;
-import autores.vistas.VentanaAMAlumno;
+import autores.vistas.VentanaAAlumno;
+import autores.vistas.VentanaMAlumno;
 import auxiliares.Apariencia;
 import interfaces.IGestorAutores;
 import java.awt.Dialog;
@@ -19,34 +20,42 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-public class ControladorAMAlumno implements IControladorAMAlumno {    
-    private VentanaAMAlumno ventana;
+public class ControladorMAlumno implements IControladorAMAlumno {    
+    private VentanaMAlumno ventana;
+//    private VentanaAAlumno ventanaAlta;
     private Alumno alumno;
 
     /**
      * Constructor
      * @param ventanaPadre (VentanaAutores en este caso)
      */
-    public ControladorAMAlumno(Dialog ventanaPadre) {
-        this(ventanaPadre, null);
-    }
+//    public ControladorMAlumno(Dialog ventanaPadre) {
+//        this(ventanaPadre, null);
+//    }
     
     /**
      * Constructor
      * @param ventanaPadre (VentanaAutores en este caso)
      * @param alumno alumno a modificar
      */    
-    public ControladorAMAlumno(Dialog ventanaPadre, Alumno alumno) {
+    public ControladorMAlumno(Dialog ventanaPadre, Alumno alumno) {
         this.alumno = alumno;
-        this.ventana = new VentanaAMAlumno(this, ventanaPadre);
-        this.ventana.setTitle(this.alumno == null ? TITULO_NUEVO : TITULO_MODIFICAR);
-        this.ventana.setLocationRelativeTo(null);
-        Apariencia.asignarNimbusLookAndFeel("Nimbus");
-        if (this.alumno == null) { //nuevo alumno
-            this.configurarTabla(new ModeloTablaGrupos());
-            this.ventana.verTablaGrupos().setEnabled(false);
-        }
-        else { //modificación de alumno
+//        this.ventana = new VentanaMAlumno(this, ventanaPadre);
+//        this.ventana.setTitle(this.alumno == null ? TITULO_NUEVO : TITULO_MODIFICAR);
+//        this.ventana.setLocationRelativeTo(null);
+//        Apariencia.asignarNimbusLookAndFeel("Nimbus");
+//        if (this.alumno == null) { //nuevo alumno
+//            this.ventanaAlta = new VentanaAAlumno(this, ventanaPadre);
+//            this.ventanaAlta.setTitle(TITULO_NUEVO);
+//            this.ventanaAlta.setLocationRelativeTo(null);
+//            this.configurarTabla(new ModeloTablaGrupos());
+////            this.ventana.verTablaGrupos().setEnabled(false);
+//            this.ventanaAlta.setVisible(true);
+//        }
+//        else { //modificación de alumno
+            this.ventana = new VentanaMAlumno(this, ventanaPadre);
+            this.ventana.setTitle(TITULO_MODIFICAR);
+            this.ventana.setLocationRelativeTo(null);
             this.ventana.verTxtDNI().setText(Integer.toString(this.alumno.verDNI()));
             this.ventana.verTxtDNI().setEditable(false);
             this.ventana.verTxtApellidos().setText(this.alumno.verApellidos());
@@ -57,8 +66,9 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
             this.ventana.verPassClave().setText(this.alumno.verClave());
             this.ventana.verPassRepetirClave().setText(this.alumno.verClave());            
             this.configurarTabla(new ModeloTablaGrupos(this.alumno));
-        }
-        this.ventana.setVisible(true);
+            this.ventana.setVisible(true);
+//        }
+//        this.ventana.setVisible(true);
     }    
     
     /**
@@ -80,9 +90,9 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
         String cx = this.ventana.verTxtCX().getText().trim();
         String clave = new String(this.ventana.verPassClave().getPassword());
         String claveRepetida = new String(this.ventana.verPassRepetirClave().getPassword());
-        if (this.alumno == null) //nuevo alumno
-            this.nuevoAlumno(dni, apellidos, nombres, cx, clave, claveRepetida);
-        else //modificar alumno
+//        if (this.alumno == null) //nuevo alumno
+//            this.nuevoAlumno(dni, apellidos, nombres, cx, clave, claveRepetida);
+//        else //modificar alumno
             this.modificarAlumno(apellidos, nombres, cx, clave, claveRepetida);
     }
     
@@ -95,14 +105,14 @@ public class ControladorAMAlumno implements IControladorAMAlumno {
      * @param clave clave del alumno
      * @param claveRepetida clave (repetida) del alumno
      */
-    private void nuevoAlumno(int dni, String apellidos, String nombres, String cx, String clave, String claveRepetida) {        
-        IGestorAutores ga = GestorAutores.instanciar();
-        String resultado = ga.nuevoAutor(dni, apellidos, nombres, cx, clave, claveRepetida);
-        if (!resultado.equals(IGestorAutores.EXITO))
-            JOptionPane.showMessageDialog(null, resultado, TITULO_NUEVO, JOptionPane.ERROR_MESSAGE);
-        else
-            this.ventana.dispose();                                    
-    }
+//    private void nuevoAlumno(int dni, String apellidos, String nombres, String cx, String clave, String claveRepetida) {        
+//        IGestorAutores ga = GestorAutores.instanciar();
+//        String resultado = ga.nuevoAutor(dni, apellidos, nombres, cx, clave, claveRepetida);
+//        if (!resultado.equals(IGestorAutores.EXITO))
+//            JOptionPane.showMessageDialog(null, resultado, TITULO_NUEVO, JOptionPane.ERROR_MESSAGE);
+//        else
+//            this.ventana.dispose();                                    
+//    }
     
     /**
      * Se encarga de la modificación del alumno

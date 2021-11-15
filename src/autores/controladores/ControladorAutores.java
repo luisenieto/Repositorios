@@ -89,12 +89,12 @@ public class ControladorAutores implements IControladorAutores {
                          
     @Override
     public void btnNuevoProfesorClic(ActionEvent evt) {
-        IControladorAMProfesor controlador = new ControladorAMProfesor(this.ventana);
+        IControladorAMProfesor controlador = new ControladorAProfesor(this.ventana);
     }
                                
     @Override
     public void btnNuevoAlumnoClic(ActionEvent evt) {
-        IControladorAMAlumno controlador = new ControladorAMAlumno(this.ventana);
+        IControladorAMAlumno controlador = new ControladorAAlumno(this.ventana);
     }    
                           
     @Override
@@ -104,7 +104,7 @@ public class ControladorAutores implements IControladorAutores {
             ModeloTablaProfesores modelo = (ModeloTablaProfesores)this.ventana.verTablaProfesores().getModel();
             Profesor profesor = modelo.verProfesor(this.filaProfesoresSeleccionada);            
             if (profesor != null) {
-                IControladorAMProfesor controlador = new ControladorAMProfesor(this.ventana, profesor);
+                IControladorAMProfesor controlador = new ControladorMProfesor(this.ventana, profesor);
             }
         }
     }
@@ -116,7 +116,7 @@ public class ControladorAutores implements IControladorAutores {
             ModeloTablaAlumnos modelo = (ModeloTablaAlumnos)this.ventana.verTablaAlumnos().getModel();
             Alumno alumno = modelo.verAlumno(this.filaAlumnosSeleccionada);            
             if (alumno != null) {
-                IControladorAMAlumno controlador = new ControladorAMAlumno(this.ventana, alumno);                    
+                IControladorAMAlumno controlador = new ControladorMAlumno(this.ventana, alumno);                    
             }
         }
     }    

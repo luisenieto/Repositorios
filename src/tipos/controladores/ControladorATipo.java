@@ -13,14 +13,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import tipos.modelos.GestorTipos;
-import tipos.vistas.VentanaAMTipo;
+import tipos.vistas.VentanaATipo;
 import interfaces.IControladorATipo;
 
 /**
  * Clase para el controlador de Altas de tipos
  */
 public class ControladorATipo implements IControladorATipo {       
-    private VentanaAMTipo ventana;      
+    private VentanaATipo ventana;      
     
     /**
      * Constructor
@@ -28,7 +28,7 @@ public class ControladorATipo implements IControladorATipo {
      * @param autor autor sobre el cual hay que ver qué habilitar según sus grupos
      */    
     public ControladorATipo(Dialog ventanaPadre, Autor autor) {
-        this.ventana = new VentanaAMTipo(this, ventanaPadre);
+        this.ventana = new VentanaATipo(this, ventanaPadre);
         this.ventana.setTitle(TITULO + " - (" + autor.verApeYNom() + ")");
         this.ventana.setLocationRelativeTo(null);
         Apariencia.asignarNimbusLookAndFeel("Nimbus");

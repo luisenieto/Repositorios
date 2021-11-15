@@ -10,7 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JTextField;
 import interfaces.IControladorAIdioma;
 
-public class VentanaAMIdioma extends JDialog {
+public class VentanaAIdioma extends JDialog {
     private IControladorAIdioma controlador;
    
     /**
@@ -18,7 +18,7 @@ public class VentanaAMIdioma extends JDialog {
      * @param controlador controlador de la ventana
      * @param ventanaPadre ventana padre (VentanaIdiomas en este caso)
      */        
-    public VentanaAMIdioma(IControladorAIdioma controlador, Dialog ventanaPadre) {
+    public VentanaAIdioma(IControladorAIdioma controlador, Dialog ventanaPadre) {
         super(ventanaPadre, true);
         initComponents();
         this.controlador = controlador;
